@@ -17,7 +17,7 @@ export default {
 
 <style>
 body {
-  background-image: url('./assets/skincare.jpg');
+  background-image: url('./assets/pencil.jpg');
   background-size:  cover;
   background-attachment: fixed;
 }
