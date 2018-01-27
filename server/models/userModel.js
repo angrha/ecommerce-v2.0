@@ -2,6 +2,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  first_name: {
+    type: String,
+    require: [true, `can't be empty`]
+  },
+  last_name: {
+    type: String,
+    require: [true, `can't be empty`]
+  },
+  address: {
+    type: String,
+    require: [true, `can't be empty`]
+  },
   username: {
     type: String,
     require: [true, `can't be empty`]
@@ -23,6 +35,7 @@ const userSchema = new Schema({
     type:String,
     required: [true, `can't be empty`]
   },
+  contact: String,
   status:  {
     type: String,
     enum: ['admin', 'user'],

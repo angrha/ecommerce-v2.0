@@ -22,8 +22,11 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" placeholder="Search" type="text">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control form-control-sm mr-sm-2" placeholder="Email" type="email">
+          <input class="form-control form-control-sm mr-sm-2" placeholder="Password" type="text">
+          <button class="btn btn-outline-info btn-sm my-2 my-sm-0" type="submit">Sign In</button>
+          <button class="btn btn-info btn-sm my-2 my-sm-0" type="submit">Sign Out</button>
+          <button type="button" class="btn btn-sm btn-link" >Sign Up</button>
         </form>
       </div>
     </nav>

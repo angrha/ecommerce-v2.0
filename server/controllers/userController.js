@@ -39,9 +39,13 @@ class UserController {
   static updateUser(req, res) {
     User.findOne({
       _id: req.params.id,
-      email: req.decoded.email
+      // email: req.decoded.email
     })
     .then(user => {
+      user.first_name = req.body.first_name || user.first_name
+      user.last_name = req.body.last_name || user.last_name
+      user.address = req.body.address || user.address
+      user.contact = req.body.contact || user.contact
       user.username = req.body.username || user.username
       user.email = req.body.email || user.email,
       user.password = req.body.password || user.password,
@@ -72,6 +76,10 @@ class UserController {
 
   static register(req, res){
     let objUser = {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      address: req.body.address,
+      contact: req.body.contact,
       username: req.body.username,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, salt)
