@@ -16,6 +16,12 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: url('./assets/skincare.jpg');
+  background-size:  cover;
+  background-attachment: fixed;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

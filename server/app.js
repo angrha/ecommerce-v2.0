@@ -8,7 +8,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config()
 
-mongoose.connect('mongodb://localhost/art'); //connect to database
+mongoose.connect('mongodb://localhost/kostmetik'); //connect to database
 
 const index = require('./routes/index');
 const users = require('./routes/users');
