@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <router-link :to="{name: 'Home'}" class="nav-link">Home <span class="sr-only">(current)</span></router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
@@ -22,11 +22,11 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input v-model="formData.email" class="form-control form-control-sm mr-sm-2" placeholder="Email" type="email">
-          <input v-model="formData.password" class="form-control form-control-sm mr-sm-2" placeholder="Password" type="password">
-          <button @click="signin(formData)" class="btn btn-outline-info btn-sm my-2 my-sm-0" type="submit">Sign In</button>
-          <button class="btn btn-info btn-sm my-2 my-sm-0" type="button">Sign Out</button>
-          <button type="button" class="btn btn-sm btn-link" >Sign Up</button>
+          <input v-if="login === false" v-model="formData.email" class="form-control form-control-sm mr-sm-2" placeholder="Email" type="email">
+          <input v-if="login === false" v-model="formData.password" class="form-control form-control-sm mr-sm-2" placeholder="Password" type="password">
+          <button v-if="login === false" @click="signin(formData)" class="btn btn-outline-info btn-sm my-2 my-sm-0" type="submit">Sign In</button>
+          <button v-if="login" @click="signout" class="btn btn-info btn-sm my-2 my-sm-0" type="button">Sign Out</button>
+          <router-link :to="{name: 'Signup'}" type="button" class="btn btn-sm btn-link" style="text-decoration: none;" >Sign Up</router-link>
         </form>
       </div>
     </nav>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -44,10 +44,20 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState([
+      'login'
+    ])
+  },
   methods: {
     ...mapActions([
-      'signin'
+      'signin',
+      'checkLogin',
+      'signout'
     ])
+  },
+  created () {
+    this.checkLogin()
   }
 }
 </script>

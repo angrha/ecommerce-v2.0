@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-// import router from '../router'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -24,6 +24,7 @@ const store = new Vuex.Store({
           console.log(response.data)
           localStorage.setItem(elukis, response.data.token)
           commit('isLogin', true)
+          router.push({name: 'Home'})
         })
         .catch(err => {
           console.log(err)
@@ -33,6 +34,20 @@ const store = new Vuex.Store({
       if (localStorage.getItem(elukis)) {
         commit('isLogin', true)
       }
+    },
+    signout ({ commit }) {
+      localStorage.clear()
+      commit('isLogin', false)
+    },
+    signup ({ commit }, payload) {
+      axios.post(baseUrl + '/api/users/signup', payload)
+        .then(response => {
+          console.log(response.data)
+          router.push({name: 'Home'})
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 })

@@ -10,10 +10,6 @@ const userSchema = new Schema({
     type: String,
     require: [true, `can't be empty`]
   },
-  address: {
-    type: String,
-    require: [true, `can't be empty`]
-  },
   username: {
     type: String,
     require: [true, `can't be empty`]
@@ -35,6 +31,7 @@ const userSchema = new Schema({
     type:String,
     required: [true, `can't be empty`]
   },
+  address: String,
   contact: String,
   status:  {
     type: String,
