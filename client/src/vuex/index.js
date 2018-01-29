@@ -21,7 +21,6 @@ const store = new Vuex.Store({
     signin ({ commit }, payload) {
       axios.post(baseUrl + '/api/users/signin', payload)
         .then(response => {
-          console.log(response.data)
           localStorage.setItem(elukis, response.data.token)
           commit('isLogin', true)
           router.push({name: 'Home'})
