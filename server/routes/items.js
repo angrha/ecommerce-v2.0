@@ -5,5 +5,7 @@ const authorization = require('../helper/authorization')
 
 router.get('/', Item.findAll)
 router.post('/', Item.create)
+router.delete('/:id', Item.delete)
+router.put('/:id', Item.update)
 
 module.exports = router

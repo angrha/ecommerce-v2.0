@@ -33,6 +33,10 @@ const userSchema = new Schema({
   },
   address: String,
   contact: String,
+  photo: {
+    type: String,
+    default: ''
+  },
   status:  {
     type: String,
     enum: ['admin', 'user'],

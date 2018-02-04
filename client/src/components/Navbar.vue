@@ -12,7 +12,7 @@
             <router-link :to="{name: 'Home'}" class="nav-link">Home <span class="sr-only">(current)</span></router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <router-link :to="{name: 'Profile', params: {id: user._id}}" class="nav-link">Profile</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
