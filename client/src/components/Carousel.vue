@@ -1,11 +1,14 @@
 <template>
-<div class="container-fluid col-md-9">
-  <div id="cssSlider">
-    <div id="sliderImages">
-      <img v-for="c in carousel" :key="c.id" :src="c.img" alt="paint"/>
-      <div style="clear:left;"></div>
+<div class="flex-ca">
+  <div class="container-fluid col-md-9">
+    <div id="cssSlider">
+      <div id="sliderImages">
+        <img v-for="c in carousel" :key="c.id" :src="c.img" alt="paint"/>
+        <div style="clear:left;"></div>
+      </div>
     </div>
   </div>
+  <div class="container-fluid sadis"> <h1> INI SIDE BAR</h1></div>
 </div>
 </template>
 
@@ -33,7 +36,7 @@ export default {
         },
         {
           id: 'si_5',
-          img: 'https://www.incollect.com/sites/uploads/Mural,-The-Dream-Garden,-1916.-Tiffany-Studios_._.jpg'
+          img: 'https://static1.squarespace.com/static/57dabcd7bebafb63eb64e790/t/57e5c3e1d2b857a31e0c0d72/1474675687014/FullSizeRender+%286%29_2.jpg?format=1000w'
         }
       ]
     }
@@ -42,82 +45,99 @@ export default {
 </script>
 
 <style scoped>
-.container-fluid {
-float: left;
+.flex-ca {
+  display: flex;
+  justify-content:flex-start;
+  flex-flow: wrap;
 }
+/* .container-fluid {
+  float: left;
+} */
+
 #cssSlider {
-overflow: hidden;
-border: 5px solid #666;
+  overflow: hidden;
+  border: 5px solid #666;
+  flex: 3;
+}
+
+.sadis {
+  flex: 1;
+  background-color: rgba(224, 212, 212, 0.349);
+  border-width: 3px;
+  border-style: solid;
+  border-color: #666;
+  border-radius: 5px;
+  margin-right: 1%;
 }
 
 #sliderImages {
-width : 5000px;
-height: 300px;
-overflow: hidden;
-/* animation duration: 16s : 5x ~3s display image + 5x ~0.2s slide */
-animation: slide 16s infinite;
--moz-animation: slide 16s infinite;
--webkit-animation: slide 16s infinite;
--o-animation: slide 16s infinite;
+  width : 5000px;
+  height: 300px;
+  overflow: hidden;
+  /* animation duration: 16s : 5x ~3s display image + 5x ~0.2s slide */
+  animation: slide 16s infinite;
+  -moz-animation: slide 16s infinite;
+  -webkit-animation: slide 16s infinite;
+  -o-animation: slide 16s infinite;
 }
 
 #sliderImages img {
-float: left;
+  float: left;
 }
 
 @keyframes slide{
-0%{margin-left: 0px;}
-17%{margin-left: 0px;}
-20%{margin-left: -1000px;}
-37%{margin-left: -1000px;}
-40%{margin-left: -2000px;}
-57%{margin-left: -2000px;}
-60%{margin-left: -3000px;}
-77%{margin-left: -3000px;}
-80%{margin-left: -4000px;}
-97%{margin-left: -4000px;}
-100%{margin-left: 0px;}
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -1000px;}
+  37%{margin-left: -1000px;}
+  40%{margin-left: -2000px;}
+  57%{margin-left: -2000px;}
+  60%{margin-left: -3000px;}
+  77%{margin-left: -3000px;}
+  80%{margin-left: -4000px;}
+  97%{margin-left: -4000px;}
+  100%{margin-left: 0px;}
 }
 
 @-moz-keyframes slide{
-0%{margin-left: 0px;}
-17%{margin-left: 0px;}
-20%{margin-left: -1000px;}
-37%{margin-left: -1000px;}
-40%{margin-left: -2000px;}
-57%{margin-left: -2000px;}
-60%{margin-left: -3000px;}
-77%{margin-left: -3000px;}
-80%{margin-left: -4000px;}
-97%{margin-left: -4000px;}
-100%{margin-left: 0px;}
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -1000px;}
+  37%{margin-left: -1000px;}
+  40%{margin-left: -2000px;}
+  57%{margin-left: -2000px;}
+  60%{margin-left: -3000px;}
+  77%{margin-left: -3000px;}
+  80%{margin-left: -4000px;}
+  97%{margin-left: -4000px;}
+  100%{margin-left: 0px;}
 }
 
 @-webkit-keyframes slide{
-0%{margin-left: 0px;}
-17%{margin-left: 0px;}
-20%{margin-left: -1000px;}
-37%{margin-left: -1000px;}
-40%{margin-left: -2000px;}
-57%{margin-left: -2000px;}
-60%{margin-left: -3000px;}
-77%{margin-left: -3000px;}
-80%{margin-left: -4000px;}
-97%{margin-left: -4000px;}
-100%{margin-left: 0px;}
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -1000px;}
+  37%{margin-left: -1000px;}
+  40%{margin-left: -2000px;}
+  57%{margin-left: -2000px;}
+  60%{margin-left: -3000px;}
+  77%{margin-left: -3000px;}
+  80%{margin-left: -4000px;}
+  97%{margin-left: -4000px;}
+  100%{margin-left: 0px;}
 }
 
 @-o-keyframes slide{
-0%{margin-left: 0px;}
-17%{margin-left: 0px;}
-20%{margin-left: -1000px;}
-37%{margin-left: -1000px;}
-40%{margin-left: -2000px;}
-57%{margin-left: -2000px;}
-60%{margin-left: -3000px;}
-77%{margin-left: -3000px;}
-80%{margin-left: -4000px;}
-97%{margin-left: -4000px;}
-100%{margin-left: 0px;}
+  0%{margin-left: 0px;}
+  17%{margin-left: 0px;}
+  20%{margin-left: -1000px;}
+  37%{margin-left: -1000px;}
+  40%{margin-left: -2000px;}
+  57%{margin-left: -2000px;}
+  60%{margin-left: -3000px;}
+  77%{margin-left: -3000px;}
+  80%{margin-left: -4000px;}
+  97%{margin-left: -4000px;}
+  100%{margin-left: 0px;}
 }
 </style>
