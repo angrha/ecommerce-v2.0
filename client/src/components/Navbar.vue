@@ -12,7 +12,7 @@
             <router-link :to="{name: 'Home'}" class="nav-link">Home <span class="sr-only">(current)</span></router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{name: 'Profile', params: {id: user._id}}" class="nav-link">Profile</router-link>
+            <router-link :to="{name: 'Profile'}" class="nav-link">Profile</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -22,11 +22,13 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input v-if="login === false" v-model="formData.email" class="form-control form-control-sm mr-sm-2" placeholder="Email" type="email">
-          <input v-if="login === false" v-model="formData.password" class="form-control form-control-sm mr-sm-2" placeholder="Password" type="password">
+          <div class="row col-xs-6">
+          <input v-if="login === false" v-model="formData.email" class="form-control form-control-sm mr-sm-2 col-xs-6" placeholder="Email" type="email">
+          <input v-if="login === false" v-model="formData.password" class="form-control form-control-sm mr-sm-2 col-xs-6" placeholder="Password" type="password">
           <button v-if="login === false" @click="signin(formData)" class="btn btn-outline-info btn-sm my-2 my-sm-0" type="submit">Sign In</button>
           <button v-if="login" @click="signout" class="btn btn-info btn-sm my-2 my-sm-0" type="button">Sign Out</button>
           <router-link :to="{name: 'Signup'}" type="button" class="btn btn-sm btn-link" style="text-decoration: none;" >Sign Up</router-link>
+          </div>
         </form>
       </div>
     </nav>

@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-reg">
+  <div class="bg-reg col-lg-5 col-lg-offset-7">
     <span>
       <img src="https://www.californiapaints.com/wp-content/uploads/californiapaints-favicon.png" alt="E-lukis">
     </span>
     <form>
       <fieldset>
-        <div class="form-group row">
+        <div class="form-group row" style="margin: auto;" >
           <!-- first_name -->
           <label for="firstName" class="col-sm-3 col-form-label">First Name</label>
           <div class="col-sm-9 lft">
@@ -77,9 +77,9 @@ export default {
   border-color: rgb(102, 72, 61);
   border-radius: 10px;
   margin: auto;
-  width: 35%;
+  width: 100%;
   padding: 0% 2% 2% 2%;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 input {

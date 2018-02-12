@@ -1,10 +1,15 @@
 <template>
-  <h1> </h1>
+  <div>
+    <Carousel/>
+  </div>
 </template>
 
 <script>
+import Carousel from '@/components/Carousel'
 export default {
-
+  components: {
+    Carousel
+  }
 }
 </script>
 
