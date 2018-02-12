@@ -7,6 +7,8 @@ const itemSchema = new Schema({
   category: String,
   price: Number,
   image: String
+}, {
+  timestamps: true
 })
 
 const Item = mongoose.model('Item', itemSchema)

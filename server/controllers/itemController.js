@@ -1,15 +1,18 @@
-const Item = require('../models/itemModel')
+const Item = require('../models/Item')
 
 class ItemController {
   static findAll(req, res) {
     Item.find()
-    .then(items => {
-      res.status(200).json({
-        message : 'list of all Items',
-        items : items
+      .then(items => {
+        res.status(200).json({
+          message : 'list of all Items',
+          items : items
+        })
       })
-    })
-    .catch( err => res.status(500).send(err))
+      .catch(err => {
+        console.log(err)
+        res.status(500).send(err)
+      })
   }
 
   static create(req, res) {
@@ -22,15 +25,17 @@ class ItemController {
     }
 
     let item = new Item(objItem)
-
     item.save()
-    .then(item => {
-      res.status(200).json({
-        message : 'succes add new item',
-        item : item
+      .then(item => {
+        res.status(200).json({
+          message : 'succes add new item',
+          item : item
+        })
       })
-    })
-    .catch(err => res.status(500).send(err))
+      .catch(err => {
+        console.log(err)
+        res.status(400).send(err)
+      })
   }
   //middleware off
   static update(req, res) {
@@ -51,9 +56,15 @@ class ItemController {
           item    : updatedItem
         })
       })
-      .catch( err => res.status(500).send(err))
+      .catch( err => {
+        console.log(err)
+        res.status(400).send(err)
+      })
     })
-    .catch( err => res.status(500).send(err))
+    .catch( err => {
+      console.log(err)
+      res.status(500).send(err)
+    })
   }
   // middleware off
   static delete(req, res) {
@@ -65,7 +76,10 @@ class ItemController {
         message : 'succes deleted',
       })
     })
-    .catch(err => res.status(500).send(err))
+    .catch(err => {
+       console.log(err)
+      res.status(500).send(err)
+    })
   }
 }
 
