@@ -10,7 +10,7 @@
           <p class="card-text">{{ paint.description }}</p>
           <div class="flx-btn">
             <h5>IDR {{ paint.price }}</h5>
-            <button type="button" class="btn btn-success btn-sm">Add To Cart</button>
+            <button @click="addToCart(paint)" type="button" class="btn btn-success btn-sm">Add To Cart</button>
           </div>
         </div>
       </div>
@@ -19,11 +19,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState([
       'paints'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'addToCart'
     ])
   }
 }
@@ -56,5 +61,9 @@ img {
 
 .ct-p {
   padding: 15px 10px 5px 10px;
+}
+
+button {
+  padding: 3px 15px;
 }
 </style>

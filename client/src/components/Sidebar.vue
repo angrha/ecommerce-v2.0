@@ -1,17 +1,21 @@
 <template>
-  <div class="container-fluid side flx-cnt">
+  <div class="container-fluid side">
     <!-- search -->
     <div class="flx-search">
-      <input class="col-md-10" placeholder="Search" type="text">
-      <i class="fa fa-search col-md-2" style="cursor: pointer;"> </i>
+      <input class="col-md-10" style="margin-left: 4px;" placeholder="    Search" type="text">
+      <i class="fa fa-search col-md-1"> </i>
+    </div>
+    <!-- Cart -->
+    <div>
+      <Cart/>
     </div>
     <!-- list group categories -->
     <div>
       <div class="list-group gr col-md-12">
         <li class="list-group-item list-group-item-action active">Categories</li>
-        <a href="#" class="list-group-item list-group-item-action">Watercolor</a>
-        <a href="#" class="list-group-item list-group-item-action">Photo</a>
         <a href="#" class="list-group-item list-group-item-action">Illustration</a>
+        <a href="#" class="list-group-item list-group-item-action">Photo</a>
+        <a href="#" class="list-group-item list-group-item-action">Watercolor</a>
         <!-- disable group -->
         <a href="#" class="list-group-item list-group-item-action disabled">
           Animals
@@ -52,8 +56,11 @@
 </template>
 
 <script>
+import Cart from '@/components/Cart'
 export default {
-
+  components: {
+    Cart: Cart
+  }
 }
 </script>
 
@@ -66,20 +73,22 @@ export default {
   border-color: #666;
   border-radius: 5px;
   margin-right: 1%;
+  padding: 0%;
 }
 
 .flx-search {
   margin-top: 0.5%;
   display: flex;
   flex-flow: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .fa-search {
   font-size:28px;
   color: #666;
-  padding-left: 5px;
+  cursor: pointer;
+  padding: 0px 10px;
 }
 
 .gr {

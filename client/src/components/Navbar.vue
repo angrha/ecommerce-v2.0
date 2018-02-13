@@ -12,13 +12,10 @@
             <router-link :to="{name: 'Home'}" class="nav-link">Home <span class="sr-only">(current)</span></router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{name: 'Profile'}" class="nav-link">Profile</router-link>
+            <router-link :to="{name: 'Profile'}" class="nav-link">My Profile</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">About Us</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -65,5 +62,8 @@ export default {
 </script>
 
 <style>
-
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
 </style>

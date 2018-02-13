@@ -11,7 +11,8 @@ const baseUrl = 'http://localhost:3000/api'
 const store = new Vuex.Store({
   state: {
     login: false,
-    paints: []
+    paints: [],
+    carts: []
   },
   mutations: {
     isLogin (state, payload) {
@@ -19,6 +20,9 @@ const store = new Vuex.Store({
     },
     listPaint (state, payload) {
       state.paints = payload
+    },
+    sendCart (state, payload) {
+      state.carts.push(payload)
     }
   },
   actions: {
@@ -55,12 +59,15 @@ const store = new Vuex.Store({
     getAllPaints ({ commit }) {
       axios.get(baseUrl + '/items')
         .then(response => {
-          console.log(response.data)
           commit('listPaint', response.data.items)
         })
         .catch(err => {
           console.log(err)
         })
+    },
+    addToCart ({ commit }, payload) {
+      console.log('pay actions', payload)
+      commit('sendCart', payload)
     }
   }
 })
