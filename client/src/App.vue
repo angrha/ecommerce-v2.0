@@ -16,10 +16,10 @@ export default {
   methods: {
     ...mapActions([
       'checkLogin'
-    ]),
-    created () {
-      this.checkLogin()
-    }
+    ])
+  },
+  created () {
+    this.checkLogin()
   }
 }
 </script>

@@ -6,7 +6,7 @@ import router from '../router'
 Vue.use(Vuex)
 
 const elukis = 'auth-elukis'
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost:3000/api'
 
 const store = new Vuex.Store({
   state: {
@@ -23,7 +23,7 @@ const store = new Vuex.Store({
   },
   actions: {
     signin ({ commit }, payload) {
-      axios.post(baseUrl + '/api/users/signin', payload)
+      axios.post(baseUrl + '/users/signin', payload)
         .then(response => {
           localStorage.setItem(elukis, response.data.token)
           commit('isLogin', true)
@@ -43,7 +43,7 @@ const store = new Vuex.Store({
       commit('isLogin', false)
     },
     signup ({ commit }, payload) {
-      axios.post(baseUrl + '/api/users/signup', payload)
+      axios.post(baseUrl + '/users/signup', payload)
         .then(response => {
           console.log(response.data)
           router.push({name: 'Home'})
@@ -53,9 +53,10 @@ const store = new Vuex.Store({
         })
     },
     getAllPaints ({ commit }) {
-      axios.get(baseUrl + '/api/items')
+      axios.get(baseUrl + '/items')
         .then(response => {
           console.log(response.data)
+          commit('listPaint', response.data.items)
         })
         .catch(err => {
           console.log(err)

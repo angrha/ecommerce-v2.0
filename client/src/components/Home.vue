@@ -1,16 +1,16 @@
 <template>
-<div class="flex-ca">
-  <div class="container-fluid col-md-9">
-    <div id="cssSlider">
-      <div id="sliderImages">
-        <img v-for="c in carousel" :key="c.id" :src="c.img" alt="paint"/>
-        <div style="clear:left;"></div>
+  <div class="flex-ca">
+    <div class="container-fluid col-md-9">
+      <div id="cssSlider">
+        <div id="sliderImages">
+          <img v-for="c in carousel" :key="c.id" :src="c.img" alt="paint"/>
+          <div style="clear:left;"></div>
+        </div>
       </div>
+      <PaintList/>
     </div>
-    <PaintList/>
+    <Sidebar/>
   </div>
-  <Sidebar/>
-</div>
 </template>
 
 <script>
@@ -52,10 +52,10 @@ export default {
   methods: {
     ...mapActions([
       'getAllPaints'
-    ]),
-    created () {
-      this.getAllPaints()
-    }
+    ])
+  },
+  created () {
+    this.getAllPaints()
   }
 }
 </script>
