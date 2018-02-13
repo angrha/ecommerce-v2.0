@@ -7,8 +7,10 @@
           <div style="clear:left;"></div>
         </div>
       </div>
+      <!-- list paint component -->
       <PaintList/>
     </div>
+    <!-- sidebar component -->
     <Sidebar/>
   </div>
 </template>
