@@ -10,11 +10,15 @@ const baseUrl = 'http://localhost:3000'
 
 const store = new Vuex.Store({
   state: {
-    login: false
+    login: false,
+    paints: []
   },
   mutations: {
     isLogin (state, payload) {
       state.login = payload
+    },
+    listPaint (state, payload) {
+      state.paints = payload
     }
   },
   actions: {
@@ -43,6 +47,15 @@ const store = new Vuex.Store({
         .then(response => {
           console.log(response.data)
           router.push({name: 'Home'})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getAllPaints ({ commit }) {
+      axios.get(baseUrl + '/api/items')
+        .then(response => {
+          console.log(response.data)
         })
         .catch(err => {
           console.log(err)
