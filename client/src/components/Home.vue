@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-ca">
+  <div class="flex-home">
     <div class="container-fluid col-md-9">
       <div id="cssSlider">
         <div id="sliderImages">
@@ -63,10 +63,11 @@ export default {
 </script>
 
 <style scoped>
-.flex-ca {
+.flex-home {
   display: flex;
   flex-flow: wrap;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 #cssSlider {

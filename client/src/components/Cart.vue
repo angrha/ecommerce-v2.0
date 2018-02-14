@@ -4,8 +4,14 @@
     <tbody>
       <tr class="table-light" v-for="cart in carts" :key="cart._id">
         <th scope="row"> {{ cart.title }}</th>
-        <td>Count</td>
-        <td>{{cart.price}}</td>
+        <td>Quantity</td>
+        <td>{{cart.price}} <i class="fa fa-trash-o"></i> </td>
+      </tr>
+      <!-- total cart -->
+      <tr class="table-primary">
+        <td> <button type="button" class="btn btn-info btn-sm">Checkout</button> </td>
+        <td> <button type="button" class="btn btn-danger btn-sm">cancel</button> </td>
+        <th scope="row">IDR 70000000</th>
       </tr>
     </tbody>
   </table>
@@ -26,5 +32,11 @@ export default {
 <style>
 .tbl {
   margin-top: 2%;
+}
+
+.fa {
+  font-size:16px;
+  color:red;
+  cursor: pointer;
 }
 </style>

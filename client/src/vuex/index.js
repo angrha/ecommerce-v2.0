@@ -49,7 +49,6 @@ const store = new Vuex.Store({
     signup ({ commit }, payload) {
       axios.post(baseUrl + '/users/signup', payload)
         .then(response => {
-          console.log(response.data)
           router.push({name: 'Home'})
         })
         .catch(err => {
