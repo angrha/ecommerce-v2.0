@@ -9,9 +9,9 @@
       </tr>
       <!-- total cart -->
       <tr class="table-primary">
-        <td> <button type="button" class="btn btn-info btn-sm">Checkout</button> </td>
-        <td> <button type="button" class="btn btn-danger btn-sm">cancel</button> </td>
-        <th scope="row">IDR {{ total }}</th>
+        <td> <button type="button" class="btn btn-info btn-sm wd" @click="checkout">Checkout</button> </td>
+        <td> <button type="button" class="btn btn-danger btn-sm" @click="cancel">cancel</button> </td>
+        <th scope="row" class="ttl">IDR {{ total }}</th>
       </tr>
     </tbody>
   </table>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState([
@@ -28,8 +28,12 @@ export default {
     ])
   },
   methods: {
-    ...mapActions([
+    ...mapMutations([
+      'cancel',
       'removeItem'
+    ]),
+    ...mapActions([
+      'checkout'
     ])
   }
 }
@@ -44,5 +48,14 @@ export default {
   font-size:16px;
   color:red;
   cursor: pointer;
+}
+
+.wd {
+  width: 120%;
+}
+
+.ttl {
+  padding-left: 0%;
+  padding-bottom: 6px;
 }
 </style>

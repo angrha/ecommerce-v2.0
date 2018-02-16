@@ -22,7 +22,7 @@ const store = new Vuex.Store({
     listPaint (state, payload) {
       state.paints = payload
     },
-    sendCart (state, payload) {
+    addToCart (state, payload) {
       let count = 0
       state.total += payload.price
       if (state.carts.length > 0) {
@@ -51,8 +51,9 @@ const store = new Vuex.Store({
           quantity: 1
         })
       }
+      localStorage.setItem('carts', JSON.stringify(state.carts))
     },
-    deleteItem (state, item) {
+    removeItem (state, item) {
       let newTotal = 0
       let index = state.carts.findIndex(x => {
         return x === item
@@ -62,6 +63,11 @@ const store = new Vuex.Store({
         newTotal += cart.price
       })
       state.total = newTotal
+      localStorage.setItem('carts', JSON.stringify(state.carts))
+    },
+    cancel (state) {
+      state.carts = []
+      localStorage.removeItem('carts')
     }
   },
   actions: {
@@ -103,11 +109,8 @@ const store = new Vuex.Store({
           console.log(err)
         })
     },
-    addToCart ({ commit }, payload) {
-      commit('sendCart', payload)
-    },
-    removeItem ({ commit }, item) {
-      commit('deleteItem', item)
+    checkout ({ commit }) {
+      console.log(JSON.parse(localStorage.getItem('carts')))
     }
   }
 })
