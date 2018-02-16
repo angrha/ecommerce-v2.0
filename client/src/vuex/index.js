@@ -36,6 +36,7 @@ const store = new Vuex.Store({
         if (count === 0) {
           state.carts.push({
             id: payload._id,
+            author: payload.author,
             title: payload.title,
             price: payload.price,
             quantity: 1
@@ -44,11 +45,23 @@ const store = new Vuex.Store({
       } else {
         state.carts.push({
           id: payload._id,
+          author: payload.author,
           title: payload.title,
           price: payload.price,
           quantity: 1
         })
       }
+    },
+    deleteItem (state, item) {
+      let newTotal = 0
+      let index = state.carts.findIndex(x => {
+        return x === item
+      })
+      state.carts.splice(index, 1)
+      state.carts.map(cart => {
+        newTotal += cart.price
+      })
+      state.total = newTotal
     }
   },
   actions: {
@@ -91,8 +104,10 @@ const store = new Vuex.Store({
         })
     },
     addToCart ({ commit }, payload) {
-      console.log('pay actions', payload)
       commit('sendCart', payload)
+    },
+    removeItem ({ commit }, item) {
+      commit('deleteItem', item)
     }
   }
 })

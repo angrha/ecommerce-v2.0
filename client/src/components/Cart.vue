@@ -5,7 +5,7 @@
       <tr class="table-light" v-for="cart in carts" :key="cart._id">
         <th scope="row"> {{ cart.title }}</th>
         <td> {{ cart.quantity }}</td>
-        <td>{{cart.price}} <i class="fa fa-trash-o"></i> </td>
+        <td>{{ cart.price }} <i class="fa fa-trash-o" @click="removeItem(cart)"></i> </td>
       </tr>
       <!-- total cart -->
       <tr class="table-primary">
@@ -19,12 +19,17 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     ...mapState([
       'carts',
       'total'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'removeItem'
     ])
   }
 }
