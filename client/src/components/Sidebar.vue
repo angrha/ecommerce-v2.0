@@ -7,7 +7,7 @@
     </div>
     <!-- Cart -->
     <div>
-      <Cart/>
+      <Cart v-if="carts.length>0"/>
     </div>
     <!-- list group categories -->
     <div>
@@ -57,9 +57,15 @@
 
 <script>
 import Cart from '@/components/Cart'
+import { mapState } from 'vuex'
 export default {
   components: {
     Cart: Cart
+  },
+  computed: {
+    ...mapState([
+      'carts'
+    ])
   }
 }
 </script>

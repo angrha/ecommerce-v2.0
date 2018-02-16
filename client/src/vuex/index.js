@@ -12,7 +12,8 @@ const store = new Vuex.Store({
   state: {
     login: false,
     paints: [],
-    carts: []
+    carts: [],
+    total: null
   },
   mutations: {
     isLogin (state, payload) {
@@ -22,7 +23,32 @@ const store = new Vuex.Store({
       state.paints = payload
     },
     sendCart (state, payload) {
-      state.carts.push(payload)
+      let count = 0
+      state.total += payload.price
+      if (state.carts.length > 0) {
+        for (let i = 0; i < state.carts.length; i++) {
+          if (state.carts[i].id === payload._id) {
+            count++
+            state.carts[i].quantity++
+            state.carts[i].price += payload.price
+          }
+        }
+        if (count === 0) {
+          state.carts.push({
+            id: payload._id,
+            title: payload.title,
+            price: payload.price,
+            quantity: 1
+          })
+        }
+      } else {
+        state.carts.push({
+          id: payload._id,
+          title: payload.title,
+          price: payload.price,
+          quantity: 1
+        })
+      }
     }
   },
   actions: {

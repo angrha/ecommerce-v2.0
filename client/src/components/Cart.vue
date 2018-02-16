@@ -4,14 +4,14 @@
     <tbody>
       <tr class="table-light" v-for="cart in carts" :key="cart._id">
         <th scope="row"> {{ cart.title }}</th>
-        <td>Quantity</td>
+        <td> {{ cart.quantity }}</td>
         <td>{{cart.price}} <i class="fa fa-trash-o"></i> </td>
       </tr>
       <!-- total cart -->
       <tr class="table-primary">
         <td> <button type="button" class="btn btn-info btn-sm">Checkout</button> </td>
         <td> <button type="button" class="btn btn-danger btn-sm">cancel</button> </td>
-        <th scope="row">IDR 70000000</th>
+        <th scope="row">IDR {{ total }}</th>
       </tr>
     </tbody>
   </table>
@@ -23,7 +23,8 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState([
-      'carts'
+      'carts',
+      'total'
     ])
   }
 }
