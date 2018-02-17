@@ -52,15 +52,19 @@
         </a>
       </div>
     </div>
+    <!-- footer -->
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Cart from '@/components/Cart'
+import Footer from '@/components/Footer'
 import { mapState } from 'vuex'
 export default {
   components: {
-    Cart: Cart
+    Cart: Cart,
+    Footer: Footer
   },
   computed: {
     ...mapState([
