@@ -13,6 +13,7 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds2332
 const index = require('./routes/index');
 const users = require('./routes/users');
 const items = require('./routes/items');
+const transactions = require('./routes/transactions');
 
 const app = express();
 app.use(cors())
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api/users', users);
 app.use('/api/items', items)
+app.use('/api/transactions', transactions)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

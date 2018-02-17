@@ -13,7 +13,7 @@ const store = new Vuex.Store({
     login: false,
     paints: [],
     carts: [],
-    total: null
+    total: 0
   },
   mutations: {
     isLogin (state, payload) {
@@ -51,7 +51,7 @@ const store = new Vuex.Store({
           quantity: 1
         })
       }
-      localStorage.setItem('carts', JSON.stringify(state.carts))
+      // localStorage.setItem('carts', JSON.stringify(state.carts))
     },
     removeItem (state, item) {
       let newTotal = 0
@@ -63,11 +63,29 @@ const store = new Vuex.Store({
         newTotal += cart.price
       })
       state.total = newTotal
-      localStorage.setItem('carts', JSON.stringify(state.carts))
+      // localStorage.setItem('carts', JSON.stringify(state.carts))
     },
     cancel (state) {
       state.carts = []
-      localStorage.removeItem('carts')
+      state.total = 0
+      // localStorage.removeItem('carts')
+    },
+    checkout (state) {
+      axios.post(baseUrl + '/transactions', {
+        items: state.carts,
+        total: state.total
+      }, {
+        headers: {
+          token: localStorage.getItem(elukis)
+        }
+      })
+        .then(response => {
+          state.carts = []
+          state.total = 0
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   actions: {
@@ -108,9 +126,6 @@ const store = new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
-    },
-    checkout ({ commit }) {
-      console.log(JSON.parse(localStorage.getItem('carts')))
     }
   }
 })
