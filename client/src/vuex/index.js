@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from '../router'
+import swal from 'sweetalert'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ const store = new Vuex.Store({
     login: false,
     paints: [],
     carts: [],
-    total: 0
+    total: 0,
+    searching: ''
   },
   mutations: {
     isLogin (state, payload) {
@@ -80,12 +82,29 @@ const store = new Vuex.Store({
         }
       })
         .then(response => {
+          swal({
+            title: 'checkout completed',
+            text: `${response.data.message}`,
+            icon: 'success',
+            button: 'next'
+          })
           state.carts = []
           state.total = 0
         })
         .catch(err => {
+          swal({
+            title: 'need login first',
+            text: `${err.response.data.message}`,
+            icon: 'error',
+            button: 'next'
+          })
           console.log(err)
         })
+    },
+    sendSearch (state, payload) {
+      console.log(state.searching, 'masuk')
+      state.searching = payload
+      console.log(state.searching)
     }
   },
   actions: {
@@ -97,6 +116,11 @@ const store = new Vuex.Store({
           router.push({name: 'Home'})
         })
         .catch(err => {
+          swal({
+            text: `${err.response.data.message}`,
+            icon: 'error',
+            button: 'next'
+          })
           console.log(err)
         })
     },
@@ -112,9 +136,19 @@ const store = new Vuex.Store({
     signup ({ commit }, payload) {
       axios.post(baseUrl + '/users/signup', payload)
         .then(response => {
+          swal({
+            text: `${response.data.message}`,
+            icon: 'success',
+            button: 'next'
+          })
           router.push({name: 'Home'})
         })
         .catch(err => {
+          swal({
+            text: `${err.response.data.message}`,
+            icon: 'error',
+            button: 'next'
+          })
           console.log(err)
         })
     },

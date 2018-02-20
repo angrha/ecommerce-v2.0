@@ -79,7 +79,7 @@ export default {
   margin: auto;
   width: 100%;
   padding: 0% 2% 2% 2%;
-  margin-top: 3%;
+  margin-top: 1%;
 }
 
 input {

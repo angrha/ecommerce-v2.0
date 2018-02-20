@@ -2,7 +2,13 @@
   <div class="container-fluid side">
     <!-- search -->
     <div class="flx-search">
-      <input class="col-md-10" style="margin-left: 4px;" placeholder="    Search" type="text">
+      <input
+        v-model="search"
+        @keyup.enter="sendSearch(search)"
+        class="col-md-10"
+        style="margin-left: 4px;"
+        placeholder="    Search"
+        type="text">
       <i class="fa fa-search col-md-1"> </i>
     </div>
     <!-- Cart -->
@@ -60,15 +66,25 @@
 <script>
 import Cart from '@/components/Cart'
 import Footer from '@/components/Footer'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   components: {
     Cart: Cart,
     Footer: Footer
   },
+  data () {
+    return {
+      search: ''
+    }
+  },
   computed: {
     ...mapState([
       'carts'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'sendSearch'
     ])
   }
 }
