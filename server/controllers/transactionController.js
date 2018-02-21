@@ -5,7 +5,7 @@ class TransactionController {
     Transaction.find()
       .then(transactions => {
         res.status(200).json({
-          msg: 'list all transaction',
+          message: 'list all transaction',
           transactions: transactions
         })
       })
@@ -23,7 +23,7 @@ class TransactionController {
     transaction.save()
       .then(recordTransaction => {
         res.status(200).json({
-          msg: 'transaction success',
+          message: 'transaction success',
           transaction : recordTransaction
         })
       })

@@ -11,7 +11,7 @@
           <li class="nav-item active">
             <router-link :to="{name: 'Home'}" class="nav-link">Home <span class="sr-only">(current)</span></router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="login">
             <router-link :to="{name: 'Profile'}" class="nav-link">My Profile</router-link>
           </li>
           <li class="nav-item">
