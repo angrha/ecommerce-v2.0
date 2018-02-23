@@ -38,7 +38,7 @@
           </div>
           <!-- button sign up -->
           <div class="col-sm-12">
-            <button @click="signup(formData)" type="button" class="btn btn-success btn-block spc">SIGN UP</button>
+            <button @click="setSignup(formData)" type="button" class="btn btn-success btn-block spc">SIGN UP</button>
           </div>
         </div>
       </fieldset>
@@ -64,22 +64,26 @@ export default {
   methods: {
     ...mapActions([
       'signup'
-    ])
-  },
-  created () {
-    this.formData.first_name = ''
-    this.formData.lasst_name = ''
-    this.formData.contact = ''
-    this.formData.username = ''
-    this.formData.email = ''
-    this.formData.password = ''
+    ]),
+    setSignup (user) {
+      this.signup(user)
+        .then(() => {
+          this.formData.first_name = ''
+          this.formData.last_name = ''
+          this.formData.contact = ''
+          this.formData.username = ''
+          this.formData.email = ''
+          this.formData.password = ''
+        })
+        .catch(err => console.log(err))
+    }
   }
 }
 </script>
 
 <style scoped>
 .bg-reg {
-  background-color: rgba(238, 220, 220, 0.445);
+  background-color: rgba(238, 220, 220, 0.5);
   border-width: 3px;
   border-style: solid;
   border-color: rgb(102, 72, 61);

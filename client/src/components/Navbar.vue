@@ -22,7 +22,7 @@
           <div class="row col-xs-6">
           <input v-if="login === false" v-model="formData.email" class="form-control form-control-sm mr-sm-2 col-xs-6" placeholder="Email" type="email">
           <input v-if="login === false" v-model="formData.password" class="form-control form-control-sm mr-sm-2 col-xs-6" placeholder="Password" type="password">
-          <button v-if="login === false" @click="signin(formData)" class="btn btn-outline-primary btn-sm my-2 my-sm-0" type="submit">Sign In</button>
+          <button v-if="login === false" @click="setSignin(formData)" class="btn btn-outline-primary btn-sm my-2 my-sm-0" type="submit">Sign In</button>
           <button v-if="login" @click="signout" class="btn btn-primary btn-sm my-2 my-sm-0" type="button">Sign Out</button>
           <router-link :to="{name: 'Signup'}" type="button" class="btn btn-sm btn-link" style="text-decoration: none;" >Sign Up</router-link>
           </div>
@@ -53,7 +53,15 @@ export default {
       'signin',
       'checkLogin',
       'signout'
-    ])
+    ]),
+    setSignin (user) {
+      this.signin(user)
+        .then(() => {
+          this.formData.email = ''
+          this.formData.password = ''
+        })
+        .catch(err => console.log(err))
+    }
   },
   created () {
     this.checkLogin()
