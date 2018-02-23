@@ -41,7 +41,8 @@ class ItemController {
   //middleware off
   static update(req, res) {
     Item.findOne({
-      _id : req.params.id
+      _id : req.params.id,
+      author: req.decoded.id
     })
       .then(item => {
         item.title = req.body.title || item.title,
@@ -71,6 +72,7 @@ class ItemController {
   static delete(req, res) {
     Item.remove({
       _id : req.params.id,
+      author: req.decoded.id
     })
       .then(() => {
         res.status(200).json({

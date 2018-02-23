@@ -6,7 +6,7 @@ const isSelf = require('../helper/authOwnOrAdm')
 
 router.get('/', Item.findAll)
 router.post('/', isLogin, Item.create)
-router.delete('/:id', isLogin, isSelf, Item.delete)
-router.put('/:id', isLogin, isSelf, Item.update)
+router.delete('/:id', isLogin, Item.delete)
+router.put('/:id', isLogin, Item.update)
 
 module.exports = router

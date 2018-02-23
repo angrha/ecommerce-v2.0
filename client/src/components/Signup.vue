@@ -65,6 +65,14 @@ export default {
     ...mapActions([
       'signup'
     ])
+  },
+  created () {
+    this.formData.first_name = ''
+    this.formData.lasst_name = ''
+    this.formData.contact = ''
+    this.formData.username = ''
+    this.formData.email = ''
+    this.formData.password = ''
   }
 }
 </script>
