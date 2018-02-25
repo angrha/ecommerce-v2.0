@@ -4,7 +4,9 @@ const User    = require('../controllers/userController')
 const isLogin = require('../helper/authentication')
 const isAdmin = require('../helper/authorization')
 const isSelf  = require('../helper/authOwnOrAdm')
+const Image = require('../helper/image')
 
+router.put('/image',isLogin, Image.multer.single('image'), Image.sendUploadToGCS, User.postImage);
 router.get('/',isLogin, isAdmin, User.findAll)
 router.post('/',isLogin, isAdmin, User.createUser)
 router.get('/:id/', isLogin, isSelf, User.getUserProfile)

@@ -174,6 +174,44 @@ class UserController {
       }) 
   }
 
+  static postImage(req, res) {
+    console.log('masuk sini', req.decoded.id)
+    if (!req.file.cloudStoragePublicUrl) {
+      res.status(500).json({
+        msg: 'gambar tidak ada'
+      })
+    }
+  
+    User.findById(req.decoded.id)
+      .then(user => {
+        user.first_name = req.body.first_name || user.first_name
+        user.last_name = req.body.last_name || user.last_name
+        user.address = req.body.address || user.address
+        user.contact = req.body.contact || user.contact
+        user.username = req.body.username || user.username
+        user.email = req.body.email || user.email,
+        user.password = req.body.password || user.password,
+        user.status   = req.body.status || user.status
+        user.image = req.file.cloudStoragePublicUrl || user.image
+
+        user.save()
+          .then(updatedUser => {
+            res.status(200).json({
+              message: 'user updated',
+              user: updatedUser
+            })
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(401).send(err)
+          })
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).send(err)
+      })
+  }
+
 }
 
 module.exports = UserController
