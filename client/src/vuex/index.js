@@ -7,7 +7,7 @@ import swal from 'sweetalert'
 Vue.use(Vuex)
 
 const elukis = 'auth-elukis'
-const baseUrl = 'http://localhost:3000/api'
+const baseUrl = 'http://35.198.200.191/api'
 
 const store = new Vuex.Store({
   state: {

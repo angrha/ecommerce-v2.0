@@ -144,7 +144,7 @@ class UserController {
             message: 'email not found'
           })
         }
-
+        console.log(req.body.password, 'masuk')
         if (!bcrypt.compareSync(req.body.password, user.password)) {
           return res.status(403).json({ 
             message: 'invalid email or password'
